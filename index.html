@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+	
+	<main class="container">
+		<h1>Tic Tac Toe</h1>
+		<h2>Tour de <span id="tourJoueur"></span></h2>
+
+		<table id="morpion">
+			<tbody>
+				<tr>
+					<td class="cell"></td>
+					<td class="cell"></td>
+					<td class="cell"></td>
+				</tr>
+				<tr>
+					<td class="cell"></td>
+					<td class="cell"></td>
+					<td class="cell"></td>
+				</tr>
+				<tr>
+					<td class="cell"></td>
+					<td class="cell"></td>
+					<td class="cell"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<table id="recapitulatif">
+			<thead>
+				<tr>
+					<th id="nomJoueur1">Joueur 1</th>
+					<th>Egalité</th>
+					<th id="nomJoueur2">Joueur 2</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="pointJoueur1">0</td>
+					<td id="pointEgalite">0</td>
+					<td id="pointJoueur2">0</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>
+			<button id="recommencer">Rejouer une <br/>  partie</button>
+			<button id="reinitialiser">Réinitialiser <br/> compteur</button>
+		</div>
+		
+	</main>
+	
+
+
+	<script src="js/fonctions.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
