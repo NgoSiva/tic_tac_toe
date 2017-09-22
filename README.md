@@ -10,3 +10,7 @@ Au début de la partie il vous sera demandé :
 ## Fonctionnalités
 - bouton "rejouer une partie" : vider les cases,
 - bouton "réinitialiser compteur" : remettre les scores à zéro.
+
+## TODO
+- Design
+- bouton pour réinitialiser les paramètres de la partie
