@@ -12,5 +12,3 @@ Au début de la partie il vous sera demandé :
 - bouton "rejouer la manche" : vider les cases,
 - bouton "réinitialiser compteur" : remettre les scores à zéro.
 
-## TODO
-- Design

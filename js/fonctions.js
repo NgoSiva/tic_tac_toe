@@ -156,7 +156,7 @@ function onClick(){
 					tourJoueur.textContent = joueur1.nom;
 					partie = true;
 
-				},2000);
+				},800);
 			}
 		}
 

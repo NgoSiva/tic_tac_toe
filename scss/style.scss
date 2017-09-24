@@ -3,9 +3,13 @@
 	margin: 2em auto 3em;
 }
 
+body{
+	background-image: url('../images/retina_wood.png');
+}
 
 h1, h2{
 	text-align: center;
+	font-family: 'Courgette', cursive;
 }
 
 
@@ -13,9 +17,12 @@ h1, h2{
 #morpion{
 	border-collapse: collapse;
 	margin: 0 auto;
+	background-color: #3D545C;
+	border: 5px solid #D08738;
+	box-shadow: 0px 0px 6px -1px rgba(0,0,0,0.75);
 
 	td{
-	border: 1px solid black;
+	border: 3px solid white;
 	width: 8em;
 	height: 8em;
 	font-family: 'FontAwesome';
@@ -25,13 +32,13 @@ h1, h2{
 	td.cross::before{
 		content: '\f00d';
 		font-size: 5em;
-		transition: 1s all;
+		color: blue;
 	}
 
 	td.circle::before{
 		content: '\f10c';
 		font-size: 5em;
-		transition: 1s all;
+		color: red;
 	}
 }
 
@@ -39,9 +46,10 @@ h1, h2{
 #recapitulatif{
 	text-align: center;
 	margin: 2em auto 0;
+	font-family: 'Roboto', sans-serif;
 
 	td{
-		padding: 1em 2em;
+		padding: 0.7em 2em;
 	}
 }
 
@@ -49,6 +57,12 @@ h1, h2{
 // boutons
 div{
 	text-align: center;
+
+	button{
+		font-family: 'Roboto', sans-serif;
+	}
+	
+
 	button+button{
 		margin-left: 2em;
 	}

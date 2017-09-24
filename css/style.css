@@ -2,14 +2,21 @@
   max-width: 1100px;
   margin: 2em auto 3em; }
 
+body {
+  background-image: url("../images/retina_wood.png"); }
+
 h1, h2 {
-  text-align: center; }
+  text-align: center;
+  font-family: 'Courgette', cursive; }
 
 #morpion {
   border-collapse: collapse;
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-color: #3D545C;
+  border: 5px solid #D08738;
+  box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.75); }
   #morpion td {
-    border: 1px solid black;
+    border: 3px solid white;
     width: 8em;
     height: 8em;
     font-family: 'FontAwesome';
@@ -17,19 +24,22 @@ h1, h2 {
   #morpion td.cross::before {
     content: '\f00d';
     font-size: 5em;
-    transition: 1s all; }
+    color: blue; }
   #morpion td.circle::before {
     content: '\f10c';
     font-size: 5em;
-    transition: 1s all; }
+    color: red; }
 
 #recapitulatif {
   text-align: center;
-  margin: 2em auto 0; }
+  margin: 2em auto 0;
+  font-family: 'Roboto', sans-serif; }
   #recapitulatif td {
-    padding: 1em 2em; }
+    padding: 0.7em 2em; }
 
 div {
   text-align: center; }
+  div button {
+    font-family: 'Roboto', sans-serif; }
   div button + button {
     margin-left: 2em; }
