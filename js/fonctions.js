@@ -46,14 +46,20 @@ function choixNbJoueur(){
 function choixNomJoueur(){
 	switch (nbJoueur) {
 		case 1:
-			joueur1.nom = window.prompt('Veuillez entrer votre nom de joueur :');
+			while(joueur1.nom == null){
+				joueur1.nom = window.prompt('Veuillez entrer votre nom de joueur :');
+			}
 			joueur1.nom += ' (X)';
 			joueur2.nom = 'Ordinateur (O)';
 			break;
 		case 2:
-			joueur1.nom = window.prompt('Veuillez entrer le nom du joueur 1 :');
+			while(joueur1.nom == null){
+				joueur1.nom = window.prompt('Veuillez entrer le nom du joueur 1 :');
+			}
 			joueur1.nom += ' (X)';
-			joueur2.nom = window.prompt('Veuillez entrer le nom du joueur 2 :');
+			while(joueur2.nom == null){
+				joueur2.nom = window.prompt('Veuillez entrer le nom du joueur 2 :');
+			}
 			joueur2.nom += ' (O)';
 			break;
 	}
@@ -184,6 +190,8 @@ function onClick(){
 
 function onClickNew(){
 	nbJoueur = 0;
+	joueur1.nom = null;
+	joueur2.nom = null;
 	choixNbJoueur();
 	choixNomJoueur();
 	onClickRecommencer();

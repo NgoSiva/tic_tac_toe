@@ -20,13 +20,13 @@ var joueur2HTML = document.getElementById('nomJoueur2');
 
 // les 2 joueurs
 var joueur1 = {
-	nom : '',
+	nom : null,
 	figure : 'cross',
 	point: 0
 }
 
 var joueur2 = {
-	nom : 'Ordinateur (O)',
+	nom : null,
 	figure : 'circle',
 	point: 0
 }
