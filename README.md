@@ -8,9 +8,9 @@ Au début de la partie il vous sera demandé :
 - le nom des joueurs.
 
 ## Fonctionnalités
-- bouton "rejouer une partie" : vider les cases,
+- bouton "démarrer une nouvelle partie" : réinitialiser les paramètres de jeu et compteur,
+- bouton "rejouer la manche" : vider les cases,
 - bouton "réinitialiser compteur" : remettre les scores à zéro.
 
 ## TODO
 - Design
-- bouton pour réinitialiser les paramètres de la partie

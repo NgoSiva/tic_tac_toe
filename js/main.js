@@ -39,7 +39,9 @@ var pointJoueur1HTML = document.getElementById('pointJoueur1');
 var pointJoueur2HTML = document.getElementById('pointJoueur2');
 var pointEgaliteHTML = document.getElementById('pointEgalite');
 
-// stocker le bouton recommencer une partie
+// stocker le bouton nouvelle partie
+var btnNouveau = document.getElementById('newGame');
+// stocker le bouton recommencer une manche
 var btnRecommencer = document.getElementById('recommencer');
 // récupérer le bouton réinitialiser les scores
 var btnReinitialiser = document.getElementById('reinitialiser');
@@ -58,13 +60,8 @@ choixNbJoueur();
 
 choixNomJoueur();
 
-// affichage du score à 0 pour les joueurs
-joueur1HTML.textContent = joueur1.nom;
-joueur2HTML.textContent = joueur2.nom;
-
-tourJoueur.textContent = joueur1.nom;
-
 // ajout des écouteurs sur les boutons
+btnNouveau.addEventListener('click', onClickNew);
 btnRecommencer.addEventListener('click', onClickRecommencer);
 btnReinitialiser.addEventListener('click', onClickReinitialiser);
 

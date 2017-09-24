@@ -48,6 +48,7 @@ function choixNomJoueur(){
 		case 1:
 			joueur1.nom = window.prompt('Veuillez entrer votre nom de joueur :');
 			joueur1.nom += ' (X)';
+			joueur2.nom = 'Ordinateur (O)';
 			break;
 		case 2:
 			joueur1.nom = window.prompt('Veuillez entrer le nom du joueur 1 :');
@@ -56,6 +57,11 @@ function choixNomJoueur(){
 			joueur2.nom += ' (O)';
 			break;
 	}
+	// affichage du score à 0 pour les joueurs
+	joueur1HTML.textContent = joueur1.nom;
+	joueur2HTML.textContent = joueur2.nom;
+
+	tourJoueur.textContent = joueur1.nom;
 }
 
 
@@ -130,14 +136,21 @@ function onClick(){
 			// vérifie si le joueur a gagné
 			conditionVictoireJoueur(joueur1.nom, joueur1.figure);
 			joueur = 2;
+			tourJoueur.textContent = joueur2.nom;
 
 			// si la partie continue
 			if (partie == true) {
-				// ordinateur ajoute un cercle sur une case au hasard
-				tourIA();
-				// vérifie si l'ordinateur a gagné
-				conditionVictoireJoueur(joueur2.nom, joueur2.figure);
-				joueur = 1;
+				partie = false;
+				// ordinateur ajoute un cercle sur une case au hasard après un délais de 2 secondes
+				setTimeout(function(){
+					tourIA();
+					// vérifie si l'ordinateur a gagné
+					conditionVictoireJoueur(joueur2.nom, joueur2.figure);
+					joueur = 1;
+					tourJoueur.textContent = joueur1.nom;
+					partie = true;
+
+				},2000);
 			}
 		}
 
@@ -156,7 +169,6 @@ function onClick(){
 			conditionVictoireJoueur(joueur2.nom, joueur2.figure);
 			joueur = 1;
 			tourJoueur.textContent = joueur1.nom;
-
 		}
 
 		// égalité
@@ -169,6 +181,15 @@ function onClick(){
 	}
 }
 
+
+function onClickNew(){
+	nbJoueur = 0;
+	choixNbJoueur();
+	choixNomJoueur();
+	onClickRecommencer();
+	onClickReinitialiser();
+	joueur = 1;
+}
 
 
 
