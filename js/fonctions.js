@@ -18,7 +18,7 @@ paramètres :
 	cell : la cellule cible
 	figure : croix ou cercle
 */
-function choixCell(cell, figure){
+function ajoutFigure(cell, figure){
 	//s'il reste des cellules vides, on ajoute une figure sur celle-ci
 	if (cellsEmpty.length>0) {
 		cell.classList.add(figure);
@@ -28,6 +28,15 @@ function choixCell(cell, figure){
 	}
 }
 
+
+
+// ajout d'une figure sur la cellule choisi par l'ordinateur
+function ajoutIA(){
+	// choix aléatoire d'une cellule pour l'odinateur
+	randomIA = nombreEntierAléatoire(0, cellsEmpty.length - 1);
+	// ajout d'une figure selon son choix
+	ajoutFigure(cellsEmpty[randomIA], joueur2.figure);
+}
 
 
 // saisie du nombre de joueur par l'utilisateur (1 ou 2 obligatoire)
@@ -73,8 +82,8 @@ function choixNomJoueur(){
 
 
 function conditionEgalite(){
-	// égalité
-	if ((cellsEmpty.length == 0) && partie == true) {
+	// égalité si cellules pleines et pas de vainqueur
+	if ((cellsEmpty.length == 0) && partie == true && vainqueur == false) {
 		alert('Egalité! Cliquez sur le bouton "rejouer une manche" pour commencer la manche suivante!');
 		pointEgalite++;
 		// affiche le score
@@ -116,16 +125,41 @@ function conditionVictoireJoueur(nom, figure){
 			case 1:
 				joueur1.point++;
 				pointJoueur1HTML.textContent = joueur1.point;
+				// joueur 1 vainqueur, prochaine manche le joueur 2 commence
+				joueur = 2;
+				tourJoueur.textContent = joueur2.nom;
+				vainqueur = true;
 				break;
 
 			// si joueur 2 a gagné, on incrémente point du joueur et l'affiche
 			case 2:
 				joueur2.point++;
 				pointJoueur2HTML.textContent = joueur2.point;
+				// joueur 2 vainqueur, prochaine manche le joueur 1 commence
+				joueur = 1;
+				tourJoueur.textContent = joueur1.nom;
+				vainqueur = true;
 				break;
 		}
+
 		//partie terminée
 		partie = false;
+
+		//si pas de vainqueur, on change de tour de joueur
+	} else {
+		switch (joueur) {
+			// si joueur 1 a joué, prochain tour joueur 2
+			case 1:
+				joueur = 2;
+				tourJoueur.textContent = joueur2.nom;
+				break;
+
+			// si joueur 2 a joué, prochain tour joueur1
+			case 2:
+				joueur = 1;
+				tourJoueur.textContent = joueur1.nom;
+				break;
+		}
 	}
 
 }
@@ -151,27 +185,14 @@ function onClick(){
 		// partie joueur vs ordinateur
 		if (nbJoueur == 1) {
 			// ajout croix sur la case cliquée
-			choixCell(this, joueur1.figure);
-			// vérifie si le joueur a gagné
+			ajoutFigure(this, joueur1.figure);
+			// vérifie si le joueur a gagné ou égalité
 			conditionVictoireJoueur(joueur1.nom, joueur1.figure);
-			joueur = 2;
-			tourJoueur.textContent = joueur2.nom;
 			conditionEgalite();
 
-			// si la partie continue
+			// si la partie continue après tour joueur 1 (pas de vainqueur ou égalité), tour de l'IA
 			if (partie == true) {
-				partie = false;
-				// ordinateur ajoute un cercle sur une case au hasard après un délais de 2 secondes
-				setTimeout(function(){
-					tourIA();
-					// vérifie si l'ordinateur a gagné
-					conditionVictoireJoueur(joueur2.nom, joueur2.figure);
-					joueur = 1;
-					tourJoueur.textContent = joueur1.nom;
-					partie = true;
-					conditionEgalite();
-
-				},800);
+				tourIA();
 			}
 		}
 
@@ -179,28 +200,26 @@ function onClick(){
 		// partie joueur 1 vs joueur 2
 		if ((nbJoueur == 2) && (joueur == 1)) {
 			// tour du joueur 1
-			choixCell(this, joueur1.figure);
+			ajoutFigure(this, joueur1.figure);
 			conditionVictoireJoueur(joueur1.nom, joueur1.figure);
-			joueur = 2;
-			tourJoueur.textContent = joueur2.nom;
 			conditionEgalite();
 
 		} else if ((nbJoueur == 2) && (joueur == 2)) {
 			// tour du joueur 2
-			choixCell(this, joueur2.figure);
+			ajoutFigure(this, joueur2.figure);
 			conditionVictoireJoueur(joueur2.nom, joueur2.figure);
-			joueur = 1;
-			tourJoueur.textContent = joueur1.nom;
 			conditionEgalite();
 		}
 	}
 }
 
 
+// Démarrer une nouvelle partie, demander les paramètres de jeu, score à 0
 function onClickNew(){
 	nbJoueur = 0;
 	joueur1.nom = null;
 	joueur2.nom = null;
+	vainqueur = false;
 	choixNbJoueur();
 	choixNomJoueur();
 	onClickRecommencer();
@@ -210,7 +229,7 @@ function onClickNew(){
 
 
 
-// efface les figures pour recommencer une partie
+// efface les figures pour commencer une nouvelle manche
 function onClickRecommencer(){
 	for (var i = 0; i < cellsAll.length; i++) {
 		cellsAll[i].classList.remove('cross');
@@ -219,6 +238,12 @@ function onClickRecommencer(){
 		cellsEmpty = document.querySelectorAll('td.cell');
 		addEventCellsEmpty();
 		partie = true;
+		vainqueur = false;
+	}
+
+	// si c'est au tour de l'IA de commencer la nouvelle manche
+	if ((nbJoueur == 1) && (joueur == 2)) {
+		tourIA();
 	}
 }
 
@@ -239,10 +264,17 @@ function onClickReinitialiser(){
 
 
 
-// ajout d'une figure sur la cellule choisi par l'ordinateur
+
+
+// tour de l'IA avec timer et condition victoire et égalité
 function tourIA(){
-	// choix aléatoire d'une cellule pour l'odinateur
-	choixIA = nombreEntierAléatoire(0, cellsEmpty.length - 1);
-	// ajout d'une figure selon son choix
-	choixCell(cellsEmpty[choixIA], joueur2.figure);
+	partie = false;
+	// ordinateur ajoute un cercle sur une case au hasard après un délais de 2 secondes
+	setTimeout(function(){
+		ajoutIA();
+		// vérifie si l'ordinateur a gagné
+		conditionVictoireJoueur(joueur2.nom, joueur2.figure);
+		partie = true;
+		conditionEgalite();
+	},800);
 }

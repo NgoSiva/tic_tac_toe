@@ -18,6 +18,8 @@ var nbJoueur = 0;
 var joueur1HTML = document.getElementById('nomJoueur1');
 var joueur2HTML = document.getElementById('nomJoueur2');
 
+// pas de vainqueur
+var vainqueur = false;
 // les 2 joueurs
 var joueur1 = {
 	nom : null,
