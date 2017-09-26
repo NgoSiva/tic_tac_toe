@@ -84,7 +84,7 @@ function choixNomJoueur(){
 function conditionEgalite(){
 	// égalité si cellules pleines et pas de vainqueur
 	if ((cellsEmpty.length == 0) && partie == true && vainqueur == false) {
-		alert('Egalité! Cliquez sur le bouton "rejouer une manche" pour commencer la manche suivante!');
+		alert('Egalité! Cliquez sur le bouton "jouer une nouvelle manche" pour commencer la manche suivante!');
 		pointEgalite++;
 		// affiche le score
 		pointEgaliteHTML.textContent = pointEgalite;
@@ -119,7 +119,7 @@ function conditionVictoireJoueur(nom, figure){
 		((cellsAll[2].classList == figure) && (cellsAll[4].classList == figure) && (cellsAll[6].classList == figure)))
 		) 
 	{
-		alert(nom+' a gagné la manche! Cliquez sur le bouton "rejouer une manche" pour commencer la manche suivante!');
+		alert(nom+' a gagné la manche! Cliquez sur le bouton "jouer une nouvelle manche" pour commencer la manche suivante!');
 		switch (joueur) {
 			// si joueur 1 a gagné, on incrémente point du joueur et l'affiche
 			case 1:
