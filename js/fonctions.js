@@ -1,4 +1,4 @@
-// fonction classée par odre alphabétique
+// fonctions classées par odre alphabétique
 
 
 
@@ -72,6 +72,18 @@ function choixNomJoueur(){
 
 
 
+function conditionEgalite(){
+	// égalité
+	if ((cellsEmpty.length == 0) && partie == true) {
+		alert('Egalité! Cliquez sur le bouton "rejouer une manche" pour commencer la manche suivante!');
+		pointEgalite++;
+		// affiche le score
+		pointEgaliteHTML.textContent = pointEgalite;
+		partie = false;
+	}
+}
+
+
 
 /*
  vérifier si un joueur a gagné
@@ -98,7 +110,7 @@ function conditionVictoireJoueur(nom, figure){
 		((cellsAll[2].classList == figure) && (cellsAll[4].classList == figure) && (cellsAll[6].classList == figure)))
 		) 
 	{
-		alert(nom+' a gagné la manche!');
+		alert(nom+' a gagné la manche! Cliquez sur le bouton "rejouer une manche" pour commencer la manche suivante!');
 		switch (joueur) {
 			// si joueur 1 a gagné, on incrémente point du joueur et l'affiche
 			case 1:
@@ -115,6 +127,7 @@ function conditionVictoireJoueur(nom, figure){
 		//partie terminée
 		partie = false;
 	}
+
 }
 
 
@@ -143,6 +156,7 @@ function onClick(){
 			conditionVictoireJoueur(joueur1.nom, joueur1.figure);
 			joueur = 2;
 			tourJoueur.textContent = joueur2.nom;
+			conditionEgalite();
 
 			// si la partie continue
 			if (partie == true) {
@@ -155,6 +169,7 @@ function onClick(){
 					joueur = 1;
 					tourJoueur.textContent = joueur1.nom;
 					partie = true;
+					conditionEgalite();
 
 				},800);
 			}
@@ -168,6 +183,7 @@ function onClick(){
 			conditionVictoireJoueur(joueur1.nom, joueur1.figure);
 			joueur = 2;
 			tourJoueur.textContent = joueur2.nom;
+			conditionEgalite();
 
 		} else if ((nbJoueur == 2) && (joueur == 2)) {
 			// tour du joueur 2
@@ -175,14 +191,7 @@ function onClick(){
 			conditionVictoireJoueur(joueur2.nom, joueur2.figure);
 			joueur = 1;
 			tourJoueur.textContent = joueur1.nom;
-		}
-
-		// égalité
-		if ((cellsEmpty.length == 0) && partie == true) {
-			alert('Egalité! Recommencez!');
-			pointEgalite++;
-			// affiche le score
-			pointEgaliteHTML.textContent = pointEgalite;
+			conditionEgalite();
 		}
 	}
 }
