@@ -7,9 +7,14 @@ body{
 	background-image: url('../images/retina_wood.png');
 }
 
-h1, h2{
+h1{
 	text-align: center;
 	font-family: 'Courgette', cursive;
+}
+
+h2{
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
 }
 
 
@@ -45,8 +50,9 @@ h1, h2{
 // les scores
 #recapitulatif{
 	text-align: center;
-	margin: 2em auto 0;
+	margin: 1em auto 0.5em;
 	font-family: 'Roboto', sans-serif;
+	font-size: 1.5em;
 
 	td{
 		padding: 0.7em 2em;
@@ -60,6 +66,17 @@ div{
 
 	button{
 		font-family: 'Roboto', sans-serif;
+		background-color: transparent;
+		border: 2px solid black;
+		border-radius: 10px;
+		padding: 0.2em 0.5em;
+		transition: 0.7s all;
+
+		&:hover{
+			cursor: pointer;
+			border-color: grey;
+			color: grey;
+		}
 	}
 	
 

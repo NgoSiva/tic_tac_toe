@@ -9,6 +9,6 @@ Au début de la partie il vous sera demandé :
 
 ## Fonctionnalités
 - bouton "démarrer une nouvelle partie" : réinitialiser les paramètres de jeu et compteur,
-- bouton "rejouer la manche" : vider les cases,
+- bouton "jouer une nouvelle manche" : vider les cases,
 - bouton "réinitialiser compteur" : remettre les scores à zéro.
 

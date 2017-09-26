@@ -5,9 +5,13 @@
 body {
   background-image: url("../images/retina_wood.png"); }
 
-h1, h2 {
+h1 {
   text-align: center;
   font-family: 'Courgette', cursive; }
+
+h2 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif; }
 
 #morpion {
   border-collapse: collapse;
@@ -32,14 +36,24 @@ h1, h2 {
 
 #recapitulatif {
   text-align: center;
-  margin: 2em auto 0;
-  font-family: 'Roboto', sans-serif; }
+  margin: 1em auto 0.5em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5em; }
   #recapitulatif td {
     padding: 0.7em 2em; }
 
 div {
   text-align: center; }
   div button {
-    font-family: 'Roboto', sans-serif; }
+    font-family: 'Roboto', sans-serif;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 0.2em 0.5em;
+    transition: 0.7s all; }
+    div button:hover {
+      cursor: pointer;
+      border-color: grey;
+      color: grey; }
   div button + button {
     margin-left: 2em; }
